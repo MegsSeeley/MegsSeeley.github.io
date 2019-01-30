@@ -1,0 +1,414 @@
+/*padding and border included in total width*/
+* {
+  box-sizing: border-box;
+}
+
+/*body {
+	background-image: linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url("Pics/yoseTopo.png"); 
+/*  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;*/
+/*	color:white;
+	font-family:"MS Gothic";
+	font-size: 16px
+	width= 100%
+  /* Create the parallax scrolling effect */
+/*  	bakcground-attachment:fixed;
+ 	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}*/
+
+body {
+	background-image: linear-gradient(0deg,rgba(255,255,255,0.4),
+		rgba(255,255,255,0.4)),
+	url("Pics/yoseHill2.png");
+	color:white;
+	font-family:"Dubai Medium";
+	font-size: 20px;
+	z-index: 2;
+	height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+img.main {
+	border-radius: 50%;
+	width:300px;
+	border:solid;
+	border-color: #232323;
+	border-width: 1px;
+}
+
+
+.buffer {
+  padding: 10px;
+}
+
+body, html {
+    height: 100%;
+}
+
+h1 {
+  font-family: "Impact";
+  font-size: 32px;
+  text-align: center;
+  color:#171717;
+ /* text-shadow: 2px 2px 5px #171717;*/
+  position:sticky;
+
+}
+
+
+.header {
+	z-index: 5;
+	position:sticky;
+	top: 8px;
+}
+
+
+h2 {
+	font-family: "MS Gothic";
+	font-size: 16px;
+	text-align:center;
+	margin-left: 0%;
+	color:white;
+}
+
+@media (min-width:1000px) {
+	h2 {
+		font-size:18px;
+	}
+	h3 {
+		font-size:16px;
+	}
+}
+
+h3 {
+	font-family: "MS Gothic";
+	font-size: 14px;
+	text-align:center;
+	margin-left: 8%;
+}
+
+hr {
+	border-color:white;
+}
+
+h4 {
+	font-family: "MS Gothic";
+	font-size: 9px;
+	text-align:center;
+/*	margin-left: 60px;*/	
+}
+
+
+@keyframes fadeIn {
+  0% {
+  	opacity:0;
+    /*transform: translateX(-100%);*/
+  }
+  100% {
+  	opacity:1;
+    /*transform: translateX(0);*/
+  }
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	margin:0px;
+	z-index: 1;
+	animation: 1s ease-out 0s 1 fadeIn;
+}
+
+img a {
+	margin-top: 10px;
+}
+
+img.labs {
+	height:90%;
+	width:90%;
+}
+
+img.labs:hover {
+	height:130%;
+	width:130%;
+}
+
+.topnav {
+  background-color: #171717;
+  overflow: hidden;
+  position: fixed;
+  width: 115%;
+  top: 0;
+  margin: 0px;
+  z-index: 3;
+  padding-left:8px;
+  overflow: visible;
+  margin-left:-5%;
+}
+
+.topnav a {
+  float: left;
+  color: #171717;
+  padding: 14px 16px;
+
+}
+
+.topnav-ad {
+  background-color: #171717;
+  overflow: hidden;
+  position: fixed;
+  width: 115%;
+  top: 0;
+  margin: 0px;
+  z-index: 3;
+  padding-left:8px;
+  overflow: visible;
+  margin-left:-1%;
+}
+
+.topnav-ad a {
+  float: left;
+  color: #171717;
+  padding: 14px 16px;
+
+}
+
+.git {
+	float:center;
+
+	margin-top:12px;
+	font-size: 20px;
+	z-index: 4;
+}
+
+.card-container {
+	width:75%;
+}
+
+.flip {
+        position: relative;
+        display: inline-block;
+        background-color: black;
+        z-index: 1;
+}
+
+/*.flip */.img-top {
+/*        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;*/
+        width:60%;
+}
+
+.flip:hover .img-top {
+        display: inline;
+}
+
+
+.container {
+  position: relative;
+  height:100%;
+  width:100%;
+}
+
+.image {
+  display: block;
+  padding: 5px;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #171717;
+}
+
+.transition {
+  position: relative;
+  height:100%;
+  width:100%;
+}
+
+.transition:hover .overlay {
+	opacity:0.75;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  text-align: center;
+  width:100%;
+  height:100%;
+}
+
+.button1 {
+  background-color: #171717; 
+/*  border-color: white;
+  border:solid;*/
+  color: white;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.button1:hover {
+  background-color:ivory;
+  color:#171717;
+  border:none;
+}
+
+.button2 {
+  background-color: ivory; 
+/*  border-color: white;
+  border:solid;*/
+  color: black;
+  padding: 4px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.button2:hover {
+  background-color:#171717;
+  color:white;
+  border:none;
+}
+
+.box {
+	border:solid;
+  border-color: white;
+  padding:20px;
+}
+
+.skill-container {
+  display: inline-block;
+  border-radius: 6px;
+  margin: 10px;
+}
+.skill-text {
+  font-family: "MS Gothic";
+  align-content:center;
+  color:white;
+  font-size: 12px;
+}
+.skill-icon {
+  vertical-align: middle;
+  align-content: center;
+  font-size: 40px;
+}
+
+
+
+/* Dropdown Button */
+.dpbtn {
+  background-color: #171717;
+  color: white;
+  padding: 16px;
+  padding-top:20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dpdown {
+  position: relative;
+  display: inline-block;
+  z-index: 4;
+  border-radius: 8px;
+  margin-bottom:5px;
+}
+
+.dpbtn:active {
+	background-color: #171717 !important;
+	border-color:#171717 !important;
+}
+
+.dpbtn:focus{
+	background-color: #171717 !important;
+	border-color:#171717 !important;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dpdown-content {
+  display: none;
+  position: absolute;
+  background-color: ivory;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  color:white;
+  width:375%;
+}
+
+/* Links inside the dropdown */
+.dpdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  z-index: 4;
+  width:375%;
+}
+
+/* Change color of dropdown links on hover */
+.dpdown-content a:hover {
+	background-color: #171717;
+	width:100%;
+	color:white;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.bkrnd {
+	background-color: #171717;
+	padding: 50px;
+	border-top-style: double;
+	border-color: white;
+	border-bottom-style: double;
+}
+
+.aboutMe {
+	width:70%;
+	text-align: center;
+	align-content: center;
+}
+
+.card-content {
+	background-color: ivory;
+	height:175px;
+}
+.card {
+   border-radius: 8px;
+   	-webkit-box-shadow: 8px 8px 12px -6px lightgrey;
+	   -moz-box-shadow: 8px 8px 12px -6px lightgrey;
+	        box-shadow: 8px 8px 12px -6px lightgrey;
+}
+
+

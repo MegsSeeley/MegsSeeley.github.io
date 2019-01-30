@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>She Adventures</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel = "stylesheet" href = "styles.css">
+</head>
+
+<body>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dpbtn')) {
+    var dropdowns = document.getElementsByClassName("dpdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<div class = "topnav-ad">
+  <div class="dpdown">
+  <button onclick="myFunction()" class="dpbtn">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div id="myDropdown" class="dpdown-content">
+    <a href="MegsSeeley_Web.html">Home</a>
+    <a href="Seeley_CV.html">CV</a>
+  <a href="MegsSeeley_Web.html#currentWork">Current Work</a>
+    <a href="MegsSeeley_Web.html#education">Education</a>
+    <a href="MegsSeeley_Web.html#pastWork">Past Work</a>
+  </div>
+</div>
+</div>
+
+
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+<div class="buffer"></div>
+
+<h1>#SheAdventures</h1>
+<br>
+<div class="row">
+	<div class = "col s12 m12 l4">
+    <font color = "black" size = "4">As an avid rock climber and adventurer, I was honored to be chosen as the <a href = "https://www.outdoorresearch.com/blog/article/introducing-the-2017-sheadventures-scholarship-winner" target="blank">Outdoor Research 2017 #SheAdventures Scholar</a>. Here is the photo, taken of Maddy Grupper and myself by Michael Stemkovski on one of our many climbing adventures, and the caption that I entered for this Scholarship.
+		<br>
+		<hr>
+		Tightening the double fisherman’s knot, my partner and I gaze across the ponderosa pine-filled valley. A single fisherman’s knot would fail as the loose end slips through the bond. Like the double knots, we strengthen each other, whatever the adventures—or misadventures. My partner smiles at me as she rappels. My favorite aspect of climbing is the love and trust we build both on and off the wall. From the boulder field to the mountaintop, we develop as climbers and people by pushing each other to new heights.</font>
+	</div>
+	<div class = "col s12 m12 l8">
+		<img src = "Pics/sheadventures.jpg" a = "Two female climbers">
+	</div>
+</div>
+</body>
