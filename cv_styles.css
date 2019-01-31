@@ -1,11 +1,17 @@
 
 body {
-  background-color: ivory;
+  background-image: linear-gradient(0deg,rgba(255,255,255,0.6),
+    rgba(255,255,255,0.6)),
+  url("Pics/yoseHill2.png");
   color:black;
   font-family:"Tunga";
   font-size: 18px;
   margin-left: 5%;
   margin-right: 5%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -123,19 +129,19 @@ h2 {
 
 
 .head1 { 
-	background-color:lavender;
+	background-color:oldlace;
 	border-radius: 3px; 
 	padding: 5px;
 }
 
 .head2 { 
-	background-color: #FDF5E6; 
+	background-color: whitesmoke; 
 	border-radius: 1px; 
 	padding: 5px;
 }
 
 a {
-  color:indigo;
+  color:slateblue;
 }
 
 .hangingindent {
