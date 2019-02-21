@@ -1,8 +1,8 @@
 
 body {
-  background-image: linear-gradient(0deg,rgba(255,255,255,0.6),
-    rgba(255,255,255,0.6)),
-  url("Pics/yoseHill2.png");
+  background-image: linear-gradient(0deg,rgba(0,0,0,0.3),
+    rgba(255,255,255,0.3)),
+  url("Pics/yoseHill.png");
   color:black;
   font-family:"Tunga";
   font-size: 18px;
@@ -129,19 +129,30 @@ h2 {
 
 
 .head1 { 
-	background-color:oldlace;
+  background-color:rgba(255,250,240,.7);
+  border-radius: 5px; 
+  padding: 5px;
+}
+/*.head1 { 
+	background-color:mistyrose;
 	border-radius: 3px; 
 	padding: 5px;
-}
+}*/
 
 .head2 { 
-	background-color: whitesmoke; 
+	background-color: floralwhite; 
 	border-radius: 1px; 
 	padding: 5px;
 }
 
-a {
-  color:slateblue;
+.head3 { 
+  background-color: whitesmoke; 
+  border-radius: 1px; 
+  padding: 5px;
+}
+
+a.email {
+  color:black;
 }
 
 .hangingindent {
