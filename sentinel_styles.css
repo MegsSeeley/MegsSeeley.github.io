@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+	background-image: url("pics/sentinel.jpg");
+	color:white;
+	font-family:"Tunga";
+	font-size: 20px;
+	text-align:center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+	font-family:"Garamond";
+	text-align: center;
+	font-size: 50px;
+}
+
+h2 {
+	font-family:"Arial Black";
+	text-align: center;
+	font-size: 30px;	
+  color:#F09900;
+}
+
+h3 {
+	text-shadow:0 0 15px black;
+	font-size: 20px;
+	font-family:"Garamond";
+
+}
+
+h4 {
+  font-size: 20px;
+  font-family:"Lucida Sans Typewriter";
+  color:ivory;
+}
+
+a {
+	color:white;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom:0px;
+	margin-right:0px;
+	margin-left:0px;
+	z-index: 1;
+	animation: 1s ease-out 0s 1 fadeIn;
+	border:double;
+	border-color: white;
+	border-radius: 8px;
+}
+
+img.sensor {
+	max-height: 130px;
+	margin-top:5px;
+	border:none;
+}
+
+.bkgnd-container {
+  background-color:black;
+  padding:20px;
+  border-style:double;
+  border-right:none;
+  border-left:none;
+  border-color:burlywood;
+}
+
+
+.fadeButton {
+	animation: fadeIn 3s ease;
+}
+
+.hangingindent {
+  padding-left: 22px ;
+  text-indent: -22px ;
+}
+
+.pos-left {
+  position: absolute;
+  left: 0px;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+.top-center {
+  top: 3px;
+  left: 16px;
+  margin-left:40%;
+  padding-bottom: 50px;
+  margin-bottom: 50%;
+}
+
+.top-right {
+  position: absolute;
+  top: 3px;
+  left: 16px;
+  margin-left:80%;
+  margin-top:140px;
+  padding-bottom: 0px;
+  margin-bottom: 0%;
+}
+
+.bottom-center {
+  position: absolute;
+  top: 3px;
+  right: 16px;
+  margin-right:70%;
+  margin-top:300px;
+  padding-bottom: 0px;
+  margin-bottom: 0%;
+}
+
+.transition {
+  position: relative;
+  vertical-align: center;
+  width:100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+.transition:hover .overlay {
+	opacity:1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  text-align: center;
+  vertical-align: center:;
+  width:100%;
+  height:100%;
+}
+
+.box {
+  padding:40px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  margin-top:10px;
+  width: 100%;
+  height:100%;
+  border-radius: 8px;
+  background-color: black;
+  border:double;
+  border-color: white;
+  color:burlywood;
+}
+
+.box-orbit {
+  padding:40px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  margin-top:10px;
+  width: 100%;
+  height:100%;
+  border-radius: 8px;
+  background-color: black;
+  border:double;
+  border-color: white;
+  color:burlywood;
+}
+
+.buffer {
+	padding:100px;
+}
+
+.text-center {
+	padding-top: 30px;
+	padding-bottom:30px;
+}
+
+.button {
+  background-color: black; 
+  border-color: white;
+  border:double;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+.button-intro {
+  background-color: black; 
+  border-color: white;
+  border:double;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  border-radius: 8px;
+  width:160px;
+}
+
+.button-intro:hover {
+  background-color:burlywood;
+  color:black;
+}
+
+.button-intro2 {
+  background-color: black; 
+  border-color: white;
+  border:double;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  border-radius: 8px;
+  width:270px;
+}
+
+.button-intro2:hover {
+  background-color:burlywood;
+  color:black;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  width:100%;
+  height:100%;
+  margin-top:5px;
+}
+
+.container {
+  position: relative;
+  height:100%;
+  width:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.res {
+  padding:10%;
+}
+
+.grad-box {
+  width:100%;
+  padding-top:30px;
+  border:solid;
+  border-color: white;
+  background-image:linear-gradient(to right, black, grey, white);
+}

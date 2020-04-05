@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sentinel-1</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel = "stylesheet" href = "sentinel_styles.css">
+</head>
+
+<body>
+
+<div class ="top-center">
+	<h1> Sentinel-1 </h1>
+	<h3>
+		Working with Sentinel-1 data in Google Earth Engine <font size="2">by Megs Seeley, Feb. 2019</font>
+	</h3>
+	<br>
+		<div class = "fadeButton"><div class = "top-right">
+		<a href="#Background"><div class = "button-intro">Background</div></a>
+		<br>
+		<a href="https://code.earthengine.google.com/d4990b02ae780af76ef97cd4359bd5c0" target = "blank"><div class = "button-intro">Tutorial</div></a>
+	</div>
+	</div>
+	</div>
+
+<div class = "bottom-center">
+	<h3> GEE Filtering Options Explained</h3>
+	<div class = "fadeButton">
+		<a href="#orbital"><div class = "button-intro2">orbitProperties_pass</div></a>
+	</div>
+	<div class = "fadeButton">
+		<a href="#polarization"><div class = "button-intro2">transmitterReceiverPolarisation</div></a>
+	</div>
+	<div class = "fadeButton">
+		<a href="#instrumentMode"><div class = "button-intro2">instrumentMode</div></a>
+	</div>
+	<div class = "fadeButton">
+		<a href="#resolution"><div class = "button-intro2">resolution_meters<br>resolution</div></a>
+	</div>
+</div>
+
+
+
+<br>
+<br>
+
+<div class = "bkgnd-container">
+<h2>Sentinel-1 Metadata</h2>
+<div class = "row">
+	<div class="col s12 m3 l3">
+		<font color = "burlywood"><b>Programme</font></b>
+		<br>European Space Agency (ESA)
+		<br>Copernicus Programme
+	</div>
+	<div class="col s12 m3 l3">
+		<font color="burlywood"><b>Launch Dates</font></b>
+		<br>Sentinel-1A: April 2014
+		<br>Sentinel-1B: April 2016
+	</div>
+	<div class="col s12 m3 l3">
+		<font color = "burlywood"><b>Instruments</font></b>
+		<br>C-SAR (C-band Synthetic-Aperture Radar)
+		<br>
+		Central Frequency: 5.404 GHZ
+	</div>
+	<div class="col s12 m3 l3">
+		<font color = "burlywood"><b>Resolution</font></b>
+		<br> Spatial: 10 meters
+		<br> Temporal: 6-12 days
+</div>
+</div>
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2 id = "Background">C-SAR</h2>
+Let's talk about sensors!
+<br>
+<br>
+Synthetic Aperture Radar (SAR) is an engineering method used to achieve high-resolution images. The sensors are side-looking, as opposed to down-looking, to more accurately determine the distance of object off which the electromagnetic waves bounce. Like the echo location of bats, the time delay of the echo determines the distance of the object. More on this will be discussed below.
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+
+
+<h2> Sensor Type</h2>
+<div class = "row">
+	<div class = "col s12 m6 l6">
+		<div class="transition">
+			<div class ="box"><b>Active </b></div>
+			<div class = "overlay">
+  				<img src="pics\active.jpg" alt = "Active sensor" class = "sensor">
+  				<br>Sensor emits electromagnetic waves and measures backscatter
+  			</div></div>
+
+		<div class="transition">
+		<div class ="box"><b>Passive </b></div>
+			<div class = "overlay">
+  				<img src="pics\passive.jpg" alt = "Active sensor" class = "sensor">
+  				<br>Sensor measures electromagnetic waves reflected by the Earth
+  			</div>
+  		</div>
+  	</div>
+
+	<div class = "s12 m6 l6">
+		<div class = "text-center">
+		There are two types of sensors -- Active and Passive. 
+		<br>
+		<br>
+		<div class = "button">
+			<font color="burlywood"><i class="fas fa-angle-double-left"></i> Hover over the boxes to learn more. </font>
+		</div>
+		<br>
+		<br>
+		C-SAR is an active sensor, which allows it to measure the Earth day and night and penetrate through clouds and vegetation.
+		<br>
+		<br>
+		<div class = "button"><font color="burlywood">Scroll down to learn more about how the active sensor works.</font><br><i class="fas fa-angle-double-down"></i> </div>
+	</div>
+</div>
+</div>
+</div>
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+	<h2 id = "orbital">Side-looking Radar</h2>
+	<h4>orbitProperties_pass</h4>
+</div>
+
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+In GEE, we can filter the data based on the orbital pass property. We have two options: "ASCENDING" and "DESCENDING".
+	<br>
+	<br>
+	<div class = "button"> <font color="burlywood">Scroll down to learn more</font></div>
+	</div> 
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+To understand the orbital property pass, we must first discuss the directionality of C-SAR.
+		<br>
+		<br>
+<div class = "row">
+	<div class = "col s12 m4 l4">
+
+		C-SAR is characterized as a side-looking radar because it transmits microwaves in only one direction. 
+		<br>
+		<br> 
+		Consider the diagrams of side- and down-looking radars. The down-looking radar would recieve backscatter from both the left and right without the ability to distinguish between the directions. The side-looking radar will recieve backscatter from only one direction, allowing us to identify the location of the signal. 
+	</div>
+	<div class = "col s6 m4 l4">
+			<div class ="container">
+			<div class = "text">Side Looking</div>
+			<img src = "Pics/side-view.jpg"></div>
+	</div>
+	<div class = "col s6 m4 l4">
+			<div class ="container">
+			<div class = "text">Down Looking</div>
+			<img src = "Pics/down-facing.jpg"></div>
+	</div>
+</div>
+
+<br>
+<br>
+
+Although the side-looking orbital property of C-SAR helps mitigate for uncertainties associated with down-looking radar, it is still necessary to manage the effect of data shadows. 
+</div>
+
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+
+<div class = "row">
+	<div class = "col s12 m8 l8">
+	Data shadows occur when a large object like a mountain or a tree block electromagnetic waves. 
+	<br>
+	<br>
+	<div class = "button"> <font color="burlywood">Hover over the image to see data shadows (red) from the different orbitals</font></div>
+	<br>
+	<br>
+
+	As the satellites pass over the same region, they gather data with different perspectives.
+	
+	</div>
+	<div class = "col s12 m4 l4">
+		<div class="transition">
+			<div class ="container">
+			<div class = "text">Ascending</div>
+		<img src = "Pics/ascending.jpg"></div>
+		<div class = "overlay">
+			<div class ="container">
+			<div class = "text">Descending</div>
+			<img src = "Pics/descending.jpg"></div>
+		</div>
+	</div>
+	</div>
+	
+		
+</div>
+
+<div class = "row">
+	<div class = "col s12 m4 l4">
+		<div class="transition">
+			<div class = "container">
+			<div class ="box-orbit"><b>Combining Orbital Paths </b></div>
+			<div class = "overlay">
+  				<img src="Pics\asc-desc.jpg" alt = "Active sensor">
+  			</div></div></div>
+	</div>
+	<div class = "col s12 m8 l8">
+		<br>
+		<br>
+		While there has been work on incorporating both the ascending and descending orbital paths to minimize data shadows, most applications use only one orbital path.
+		<br>
+	<br>
+	<div class = "button"> <font color="burlywood">Hover over the box to see how the different orbitals can interact to reduce data shadows</font></div>
+	</div>
+</div>	
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2 id = "Background">Electromagnetic Waves</h2>
+Let's talk about waves!
+</div>
+
+
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+<h2>Wave Structure</h2>
+<div class = "row">
+	<div class = "col s6 m6 l6">
+		<div class = "text-center">
+		C-SAR allows us to characterize the Earth's surface using microwaves. 
+		<br>
+		<br>Lets quickly recap electromagnetic waves. Waves have a length from peak to peak, referred to as wavelength (<id>&lambda;</id>), which determines where the wave falls on the electromagnetic spectrum. Microwaves are longer than visible and infrared waves, but shorter than radio waves. Wave height is referred to as amplitude (A). 
+	</div>
+	</div>
+	<div class = "col s6 m6 l6">
+		<img src = "Pics/wave.jpg">
+	</div>
+</div>
+</div>
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+
+<h2> Wavelength</h2>
+<div class = "row">
+	<div class = "col s12 m6 l6">
+		<img src="Pics/wavelength.jpg">
+	</div>
+	<div class = "col s12 m6 l6">
+		<br>
+		<br>
+		Wavelength determines the surface from which we gather data. Shorter waves can only measure upper surfaces like vegetation canopies and soil surfaces. The longer the wavelength, the deeper into canopies and soil the wave can penetrate. 
+		<br>
+		<br>Sentinel-1 has a C-band Synthetic Aperature Radar (C-SAR). The C-band indicates that the radar has a wave frequency of 4 to 8 gigahertz. Recall that wavelength is the inverse of frequency. This frequency can penetrate vegetation canopies and soil surfaces, but not as deep as higher-freqency, or longer wavelength, waves.
+	</div>
+</div>
+</div>
+
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+<h2 id = "Background">Incidence Angle</h2>
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<div class = "row">
+	<div class = "col s12 m6 l6">
+		<br>We describe the angle between the transmitted wave and the Earth using its incidence angle. 
+		<br>
+		<br>
+
+		<div class = "button"> <font color="burlywood">Examine the diagram depicting the incidence angle
+		</font></div>
+		<br>
+		<br>
+		To determine the incidence angle, we first draw a perpendicular line from the point where the transmitted wave hits the earth (orange). Next, we measure the angle between the perpendicular line and the transmitted wave (white). This angle (&theta;) is our incidence angle.
+	</div>
+	<div class = "col s12 m6 l6">
+		Incidence Angle
+		<br>
+		<img src = "Pics/incidence.jpg">
+	</div>
+</div>
+</div>
+
+<div class = "buffer"></div>
+
+
+<div class = "bkgnd-container">
+	<div class = "row">
+		<div class = "col s12 m4 l4">
+			Incidence angles influence our data. Smaller angles provide a top view as the wave is more likely to reflect off vegetation canopies and the ground. Larger angles tend to reflect off tree trunks and therefore provide more of a side view. 
+			<br><br>
+			While it is important to consider the effect of the incidence angle on our data, we will assume that the incident angle range is too small to have a major effect on the data.
+		</div>
+		<div class = "col s12 m4 l4">
+			<div class ="container">
+			<div class = "text">High Incidence Angle</div>
+		<img src = "Pics/inc-high.jpg"></div>
+	</div>
+	<div class = "col s12 m4 l4">
+			<div class ="container">
+			<div class = "text">Low Incidence Angle</div>
+		<img src = "Pics/inc-low.jpg"></div>
+	</div>
+</div>
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+
+<h2 id = "polarization"> Wave Polarization</h2>
+			<h4>transmitterRecieverPolarization</h4>
+</div>
+
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+In GEE, we can filter the data based on the transmission/recieved polarization patterns: ['VV'], ['HH'], ['VV', 'VH'], and ['HH', 'HV'].
+	<br>
+	<br>
+	<div class = "button"> <font color="burlywood">Scroll down to learn more</font></div>
+	</div> 
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<div class = "row">
+	<div class = "col s6 m6 l6">
+		<div class = "text-center">
+			<br>
+		 Polarization refers to the orientation of the wave. In Google Earth Engine, wave polarization, or "transmitterRecieverPolarization," is designated as V for vertical (depicted in yellow) or H for horizontal (depicted in white).  
+		<br>
+		<br>
+		<div class = "button"> <font color="burlywood">Hover over the wave (right) to see the different orientations</font></div>
+	</div>
+	</div>
+
+	<div class = "col s6 m6 l6">
+		<div class="transition">
+			<div class ="container">
+			<div class = "text">V</div>
+		<img src = "Pics/wave_blank.jpg"></div>
+		<div class = "overlay">
+			<div class ="container">
+			<div class = "text">H</div>
+			<img src = "Pics/wave_horiz.jpg"></div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class = "buffer"> </div>
+
+<div class = "bkgnd-container">
+We can think of the different polarization patterns like the different color bands in optical sensors like Landsat, with different bands building different aspects of the landscape. Each polarization band represents the outgoing, or transmitted, microwaves and those received by the sensor. The magnitude of these transmitted/recieved polarization bands in decibles is used to characterize the Earth.
+
+<br>
+Below are examples of different transmission/recieved microwave examples. The first letter represents the polarization of the transmitted microwave, and the second letter represents the polarization of the received wave.
+<br>
+<br>
+<div class = "button"> <font color="burlywood">Hover over the scenarios below to discover what landscape features are best-represented by the various polarization bands</font> </div>
+<br>
+<br>
+
+<div class = "row">
+	<div class = "col s12 m12 l6">
+	<div class = "row">
+		<div class = "col s6 m6 l6">	
+		VV
+		<br>
+		<div class = "transition">
+		<img src ="Pics/VV.jpg">
+		<div class = "overlay">
+			<img src = "Pics/VV_Water.jpg">
+		</div>
+		</div>
+		</div>
+		<div class = "col s6 m6 l6">
+		HH
+		<br>
+		<div class = "transition">
+		<img src ="Pics/HH.jpg">
+		<div class = "overlay">
+			<img src = "Pics/HH_Water.jpg">
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+	<div class = "col s12 m12 l6">
+	<div class = "row">
+		<div class = "col s6 m6 l6">	
+		VH
+		<br>
+		<div class = "transition">
+		<img src ="Pics/VH.jpg">
+		<div class = "overlay">
+			<img src = "Pics/VH_Tree.jpg">
+		</div>
+		</div>
+		</div>
+		<div class = "col s6 m6 l6">
+		HV
+		<br>
+		<div class = "transition">
+		<img src ="Pics/HV.jpg">
+		<div class = "overlay">
+			<img src = "Pics/HV_Tree.jpg">
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+
+<br>
+<br>
+
+The HH and VV bands (co-polarization) are frequently used to map water bodies while the HV and VH bands (cross-polarization) are used for regions with rough surfaces, such as a forest. 
+</div>
+
+
+<div class = "buffer"></div>
+
+
+
+
+<div class = "bkgnd-container">
+	<h2> Data Type</h2>
+	Each pixel in the raw SAR data is a complex value, which is commonly known as power or amplitude. To work with easy to understand values, power values are converted to decibels (dB).
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+Now lets see how we can use the magnitude of these bands to map the Earth's surface
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+
+<h2> Scattering Mechanisms</h2>
+
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+	The sensor receives only the electromagnetic waves that it encounters. The higher the decible value for each band, the more backscatter the sensor recieves. 
+	<br>
+	<br>
+	<div class = "button"> <font color="burlywood">Hover over the images below to see different examples of each backscatter category. </font> </div>
+	<br>
+	<br>
+<div class = "row">
+	<div class = "col s4 m4 l4">	
+		Direct Backscatter
+		<br>
+		<div class = "transition">
+		<img src ="Pics/flat1.jpg">
+		<div class = "overlay">
+			<img src = "Pics/flat2.jpg">
+		</div>
+		</div>
+		Decible Value: Low
+	</div>
+	<div class = "col s4 m4 l4">
+		Volume Scattering
+		<br>
+		<div class = "transition">
+		<img src ="Pics/rough2.jpg">
+		<div class = "overlay">
+			<img src = "Pics/rough1.jpg">
+		</div>
+		</div>
+		Decible Value: Medium
+	</div>
+	<div class = "col s4 m4 l4">	
+		Double Bounce
+		<br>
+		<img src ="Pics/building1.jpg">
+		<br>
+		Decible Value: High
+	</div>
+</div>
+<br>
+<br>
+<div class = "grad-box"></div>
+<br>
+<div class = "button"> <font color="burlywood">See the above shade gradient to understand how these scatter mechanisms are depicted in C-SAR images.</font> </div>
+<br>
+</div>
+
+<div class = 'buffer'></div>
+
+<div class = "bkgnd-container">
+<h2 id = "Background">Other Filtering Properties</h2>
+</div>
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2 id = "instrumentMode">Swath Measurments</h2>
+<h4>instrumentMode</h4>
+</div>
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+C-SAR data has four instrument modes, three of which are available on GEE: 'IW' (Interferometric Wide Swath), 'EW' (Extra Wide Swath), and 'SM' (Strip Map).
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+Each instrument mode has a swath width, or the width of an area on a single satellite pass, and an incident angle. 
+<br>
+<br>
+<div class = "button"> <font color="burlywood">Hover over the instrument modes below to explore their uses.
+</font></div>
+<br>
+<br>
+<div class = "row">
+		<div class = "col s13 m4 l4">	
+		Interferometric Wide Swath
+		
+		<br>
+		<div class = "transition">
+			<img src = "Pics/iw.jpg">
+			
+		<div class = "overlay">
+			<div class ="container">
+			<div class = "text">Universal</div>
+				<img src = "Pics/iw_use.jpg">
+			</div>
+		</div>
+		</div>
+		<br>250 km Wide <br> 20&deg; Incidence Angle
+	</div>
+		<div class = "col s13 m4 l4">
+		Extra Wide Swath
+		<br>
+		<div class = "transition">
+		<img src ="Pics/ew.jpg">
+		<div class = "overlay">
+			<div class ="container">
+			<div class = "text">Coastal Monitoring <br>ship traffic, oil spills, sea ice</div>
+			<img src = "Pics/ew_use.jpg">
+			
+		</div>
+	</div>
+		</div>
+		<br>410 km Wide <br> 20&deg; Incidence Angle
+		</div>
+
+	<div class = "col s12 m4 l4">
+	
+		Strip Map
+		<br>
+		<div class = "transition">
+		<img src ="Pics/sm.jpg">
+		<div class = "overlay">
+			<div class ="container">
+			<div class = "text">Small Islands</div>
+			<img src = "Pics/sm_use.jpg">
+			
+		</div>
+		</div>
+		</div>
+		<br>80 km Wide <br> 25&deg; Incidence Angle
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+	The Interferometric Wide Swath is used most frequently as it is the swiss army knife of instrument modes. Most of our work with Sentinel-1 will use the Interferometric Wide Swath.
+</div>
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2 id = "resolution">Resolution</h2>
+<h4>resolution_meters</h4>
+<h4>resolution</h4>
+</div>
+
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+Resolution is perhaps the most straight-forward filtering option. 
+
+<br> We can choose the spatial resolution of our data in meters squared using 'resolution_meters': 10, 25, or 40. 
+<br>
+<br> Alternatively, we can use the 'resolution' filtering option to designate a resolution class for the data. The options are 'H' for high, which is 10 meters squared, and 'M' for medium, which is 40 meters squared.
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2>Visualizing Spatial Resolution</h2> 
+<br>
+<br>
+Spatial resolution refers to pixel size. For each pixel in our raster, we have one data point. As the pixel size, or resolution, increases, the detail decreases because we have one value representing a larger area.
+<br>
+<br>
+<div class = "button"> <font color="burlywood">The figures below represent different resolutions. 
+<br>
+Which resolution would be most efficient for mapping the entire globe? 
+<br>
+Which would provide the detail necessary to map a city?</font><\\/div>
+<br>
+<br>
+<br>
+<div class = "row">
+	<div class = "col s6 m3 l3">
+		<div class ="container">
+			<div class = "text">1 meter squared</div>
+			<img src = "Pics/1m.jpg" class = "res"></div>
+	</div>
+	<div class = "col s6 m3 l3">
+		<div class ="container">
+			<div class = "text">10 meters squared</div>
+			<img src = "Pics/10m.jpg" class = "res"></div>
+	</div>
+	<div class = "col s6 m3 l3">
+		<div class ="container">
+			<div class = "text">25 meters squared</div>
+			<img src = "Pics/25m.jpg" class = "res"></div>
+	</div>
+	<div class = "col s6 m3 l3">
+		<div class ="container">
+			<div class = "text">40 meters squared</div>
+			<img src = "Pics/40m.jpg" class = "res"></div>
+	</div>
+</div>
+</div>
+
+<div class = "buffer"></div>
+<div class = "bkgnd-container">
+<h2 id = "Background">Next Steps</h2>
+Now lets see how we put this together in Google Earth Engine in the Tutorial section!
+</div>
+
+<div class = "buffer"></div>
+
+<div class = "fadeButton">
+		<a href="https://code.earthengine.google.com/d4990b02ae780af76ef97cd4359bd5c0" target = "blank"><div class = "button-intro">Tutorial</div></a>
+	</div>
+
+<div class = "buffer"></div>
+
+<div class = "bkgnd-container">
+<h2> References</h2>
+
+<div class = "button"> <font color="burlywood">All the references are links!</font> </div>
+<br>
+<br>
+<div align='left'>
+<a href = "https://arset.gsfc.nasa.gov/disasters/webinars/intro-SAR" target = "blank">ARSET: Introduction to Synthetic Aperture Radar</a>
+<br>
+<br>
+<a href = "https://arset.gsfc.nasa.gov/disasters/webinars/advanced-SAR-18" target = "blank">ARSET: Advanced Webinar: Radar Remote Sensing for Land, Water, & Disaster Applications</a>
+<br>
+<br>
+<a href = "https://arset.gsfc.nasa.gov/water/workshops/india2018" target = "blank">ARSET: Satellite Remote Sensing of Flood Monitoring and Management</a>
+<br>
+<br>
+<div class = "hangingindent"><a href = 'https://doi.org/10.1111/jfr3.12303' target = "blank">Clement, M. A., Kilsby, C. G., & Moore, P. (2018). Multi‐temporal synthetic aperture radar flood mapping using change detection. Journal of Flood Risk Management, 11(2), 152-168.</a></div>
+<br>
+<a href="https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-1-sar/sar-instrument" target = "blank"> ESA Sentinel-1 </a>
+<br>
+<br>
+<a href="https://developers.google.com/earth-engine/tutorial_api_02" target = "blank"> Google Earth Engine API Sentinel-1 Tutorial</a>
+<br>
+<br>
+<div class = "hangingindent"><a href = "https://iopscience.iop.org/article/10.1088/1748-9326/9/3/035002/meta" target = "blank">Long, S., Fatoyinbo, T. E., & Policelli, F. (2014). Flood extent mapping for Namibia using change detection and thresholding with SAR. Environmental Research Letters, 9(3), 035002.</a></div>
+<br>
+<a href="https://www.nrcan.gc.ca/earth-sciences/geomatics/satellite-imagery-air-photos/satellite-imagery-products/educational-resources/9275" target = "blank"> Natural Resources Canada: Radar Polemetry</a>
+<br>
+<br>
+SAR One-Pagers <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-A.pdf" target = "blank">A</a> <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-B.pdf" target = "blank">B</a> <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-C.pdf" target = "blank">C</a>
+</div>
+
+
+
+
+</div>
+
+<div class = "buffer"></div>
+
+</html>
+</body>
