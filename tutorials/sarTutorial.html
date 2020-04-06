@@ -12,35 +12,11 @@
 <div class ="top-center">
 	<h1> Sentinel-1 </h1>
 	<h3>
-		Working with Sentinel-1 data in Google Earth Engine <font size="2">by Megs Seeley, Feb. 2019</font>
+		Synthetic aperature radar basics <font size="2">by Megs Seeley, Feb. 2019</font>
 	</h3>
-	<br>
-		<div class = "fadeButton"><div class = "top-right">
-		<a href="#Background"><div class = "button-intro">Background</div></a>
-		<br>
-		<a href="https://code.earthengine.google.com/d4990b02ae780af76ef97cd4359bd5c0" target = "blank"><div class = "button-intro">Tutorial</div></a>
 	</div>
 	</div>
 	</div>
-
-<div class = "bottom-center">
-	<h3> GEE Filtering Options Explained</h3>
-	<div class = "fadeButton">
-		<a href="#orbital"><div class = "button-intro2">orbitProperties_pass</div></a>
-	</div>
-	<div class = "fadeButton">
-		<a href="#polarization"><div class = "button-intro2">transmitterReceiverPolarisation</div></a>
-	</div>
-	<div class = "fadeButton">
-		<a href="#instrumentMode"><div class = "button-intro2">instrumentMode</div></a>
-	</div>
-	<div class = "fadeButton">
-		<a href="#resolution"><div class = "button-intro2">resolution_meters<br>resolution</div></a>
-	</div>
-</div>
-
-
-
 <br>
 <br>
 
@@ -49,27 +25,35 @@
 <div class = "row">
 	<div class="col s12 m3 l3">
 		<font color = "burlywood"><b>Programme</font></b>
+		<font size = '3'>
 		<br>European Space Agency (ESA)
 		<br>Copernicus Programme
+		</font>
 	</div>
 	<div class="col s12 m3 l3">
 		<font color="burlywood"><b>Launch Dates</font></b>
+		<font size = '3'>
 		<br>Sentinel-1A: April 2014
 		<br>Sentinel-1B: April 2016
+		</font>
 	</div>
 	<div class="col s12 m3 l3">
 		<font color = "burlywood"><b>Instruments</font></b>
+		<font size = '3'>
 		<br>C-SAR (C-band Synthetic-Aperture Radar)
-		<br>
-		Central Frequency: 5.404 GHZ
+		</font>
 	</div>
 	<div class="col s12 m3 l3">
 		<font color = "burlywood"><b>Resolution</font></b>
+		<font size = '3'>
 		<br> Spatial: 10 meters
 		<br> Temporal: 6-12 days
+		</font>
 </div>
 </div>
 </div>
+
+
 
 <div class = "buffer"></div>
 
@@ -79,6 +63,11 @@ Let's talk about sensors!
 <br>
 <br>
 Synthetic Aperture Radar (SAR) is an engineering method used to achieve high-resolution images. The sensors are side-looking, as opposed to down-looking, to more accurately determine the distance of object off which the electromagnetic waves bounce. Like the echo location of bats, the time delay of the echo determines the distance of the object. More on this will be discussed below.
+
+<br>
+
+Sentinel-1 data can be accessed and manipulated via Google Earth Engine (GEE). The filtering properties are explained below.
+
 </div>
 
 <div class = "buffer"></div>
@@ -110,15 +99,16 @@ Synthetic Aperture Radar (SAR) is an engineering method used to achieve high-res
 		There are two types of sensors -- Active and Passive. 
 		<br>
 		<br>
-		<div class = "button">
+
 			<font color="burlywood"><i class="fas fa-angle-double-left"></i> Hover over the boxes to learn more. </font>
-		</div>
+		
+		<br>
 		<br>
 		<br>
 		C-SAR is an active sensor, which allows it to measure the Earth day and night and penetrate through clouds and vegetation.
-		<br>
-		<br>
-		<div class = "button"><font color="burlywood">Scroll down to learn more about how the active sensor works.</font><br><i class="fas fa-angle-double-down"></i> </div>
+		<div class = "pad-div">
+		<font color="burlywood">Scroll down to learn more about how the active sensor works.</font><br><i class="fas fa-angle-double-down"></i>
+	</div>
 	</div>
 </div>
 </div>
@@ -128,7 +118,7 @@ Synthetic Aperture Radar (SAR) is an engineering method used to achieve high-res
 
 <div class = "bkgnd-container">
 	<h2 id = "orbital">Side-looking Radar</h2>
-	<h4>orbitProperties_pass</h4>
+	<h4>GEE Filter: orbitProperties_pass</h4>
 </div>
 
 <div class = "buffer"></div>
@@ -138,7 +128,7 @@ Synthetic Aperture Radar (SAR) is an engineering method used to achieve high-res
 In GEE, we can filter the data based on the orbital pass property. We have two options: "ASCENDING" and "DESCENDING".
 	<br>
 	<br>
-	<div class = "button"> <font color="burlywood">Scroll down to learn more</font></div>
+	 <font color="burlywood">Scroll down to learn more</font>
 	</div> 
 </div>
 
@@ -184,7 +174,7 @@ Although the side-looking orbital property of C-SAR helps mitigate for uncertain
 	Data shadows occur when a large object like a mountain or a tree block electromagnetic waves. 
 	<br>
 	<br>
-	<div class = "button"> <font color="burlywood">Hover over the image to see data shadows (red) from the different orbitals</font></div>
+	 <font color="burlywood">Hover over the image to see data shadows (red) from the different orbitals</font>
 	<br>
 	<br>
 
@@ -222,7 +212,7 @@ Although the side-looking orbital property of C-SAR helps mitigate for uncertain
 		While there has been work on incorporating both the ascending and descending orbital paths to minimize data shadows, most applications use only one orbital path.
 		<br>
 	<br>
-	<div class = "button"> <font color="burlywood">Hover over the box to see how the different orbitals can interact to reduce data shadows</font></div>
+	 <font color="burlywood">Hover over the box to see how the different orbitals can interact to reduce data shadows</font>
 	</div>
 </div>	
 </div>
@@ -332,7 +322,7 @@ Let's talk about waves!
 <div class = "bkgnd-container">
 
 <h2 id = "polarization"> Wave Polarization</h2>
-			<h4>transmitterRecieverPolarization</h4>
+			<h4>GEE Filter: transmitterRecieverPolarization</h4>
 </div>
 
 
@@ -343,7 +333,7 @@ Let's talk about waves!
 In GEE, we can filter the data based on the transmission/recieved polarization patterns: ['VV'], ['HH'], ['VV', 'VH'], and ['HH', 'HV'].
 	<br>
 	<br>
-	<div class = "button"> <font color="burlywood">Scroll down to learn more</font></div>
+	<font color="burlywood">Scroll down to learn more</font>
 	</div> 
 </div>
 
@@ -357,7 +347,7 @@ In GEE, we can filter the data based on the transmission/recieved polarization p
 		 Polarization refers to the orientation of the wave. In Google Earth Engine, wave polarization, or "transmitterRecieverPolarization," is designated as V for vertical (depicted in yellow) or H for horizontal (depicted in white).  
 		<br>
 		<br>
-		<div class = "button"> <font color="burlywood">Hover over the wave (right) to see the different orientations</font></div>
+		 <font color="burlywood">Hover over the wave (right) to see the different orientations</font>
 	</div>
 	</div>
 
@@ -386,7 +376,7 @@ We can think of the different polarization patterns like the different color ban
 Below are examples of different transmission/recieved microwave examples. The first letter represents the polarization of the transmitted microwave, and the second letter represents the polarization of the received wave.
 <br>
 <br>
-<div class = "button"> <font color="burlywood">Hover over the scenarios below to discover what landscape features are best-represented by the various polarization bands</font> </div>
+<font color="burlywood">Hover over the scenarios below to discover what landscape features are best-represented by the various polarization bands</font> 
 <br>
 <br>
 
@@ -479,7 +469,7 @@ Now lets see how we can use the magnitude of these bands to map the Earth's surf
 	The sensor receives only the electromagnetic waves that it encounters. The higher the decible value for each band, the more backscatter the sensor recieves. 
 	<br>
 	<br>
-	<div class = "button"> <font color="burlywood">Hover over the images below to see different examples of each backscatter category. </font> </div>
+	 <font color="burlywood">Hover over the images below to see different examples of each backscatter category. </font> 
 	<br>
 	<br>
 <div class = "row">
@@ -532,7 +522,7 @@ Now lets see how we can use the magnitude of these bands to map the Earth's surf
 
 <div class = "bkgnd-container">
 <h2 id = "instrumentMode">Swath Measurments</h2>
-<h4>instrumentMode</h4>
+<h4>GEE Filter: instrumentMode</h4>
 </div>
 
 
@@ -548,8 +538,8 @@ C-SAR data has four instrument modes, three of which are available on GEE: 'IW' 
 Each instrument mode has a swath width, or the width of an area on a single satellite pass, and an incident angle. 
 <br>
 <br>
-<div class = "button"> <font color="burlywood">Hover over the instrument modes below to explore their uses.
-</font></div>
+<font color="burlywood">Hover over the instrument modes below to explore their uses.
+</font>
 <br>
 <br>
 <div class = "row">
@@ -616,8 +606,7 @@ Each instrument mode has a swath width, or the width of an area on a single sate
 
 <div class = "bkgnd-container">
 <h2 id = "resolution">Resolution</h2>
-<h4>resolution_meters</h4>
-<h4>resolution</h4>
+<h4>GEE Filter: resolution_meters, resolution</h4>
 </div>
 
 
@@ -640,11 +629,11 @@ Resolution is perhaps the most straight-forward filtering option.
 Spatial resolution refers to pixel size. For each pixel in our raster, we have one data point. As the pixel size, or resolution, increases, the detail decreases because we have one value representing a larger area.
 <br>
 <br>
-<div class = "button"> <font color="burlywood">The figures below represent different resolutions. 
+<font color="burlywood">The figures below represent different resolutions. 
 <br>
 Which resolution would be most efficient for mapping the entire globe? 
 <br>
-Which would provide the detail necessary to map a city?</font><\\/div>
+Which would provide the detail necessary to map a city?</font>
 <br>
 <br>
 <br>
@@ -672,27 +661,18 @@ Which would provide the detail necessary to map a city?</font><\\/div>
 </div>
 </div>
 
-<div class = "buffer"></div>
-<div class = "bkgnd-container">
-<h2 id = "Background">Next Steps</h2>
-Now lets see how we put this together in Google Earth Engine in the Tutorial section!
-</div>
 
-<div class = "buffer"></div>
-
-<div class = "fadeButton">
-		<a href="https://code.earthengine.google.com/d4990b02ae780af76ef97cd4359bd5c0" target = "blank"><div class = "button-intro">Tutorial</div></a>
-	</div>
 
 <div class = "buffer"></div>
 
 <div class = "bkgnd-container">
 <h2> References</h2>
 
-<div class = "button"> <font color="burlywood">All the references are links!</font> </div>
+<font color="burlywood">All the references are links!</font> 
 <br>
 <br>
 <div align='left'>
+	<font size = "3">
 <a href = "https://arset.gsfc.nasa.gov/disasters/webinars/intro-SAR" target = "blank">ARSET: Introduction to Synthetic Aperture Radar</a>
 <br>
 <br>
@@ -717,7 +697,7 @@ Now lets see how we put this together in Google Earth Engine in the Tutorial sec
 <br>
 SAR One-Pagers <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-A.pdf" target = "blank">A</a> <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-B.pdf" target = "blank">B</a> <a href="https://www.servirglobal.net/Portals/0/brochures/AGU-1pagers-C.pdf" target = "blank">C</a>
 </div>
-
+</font>
 
 
 

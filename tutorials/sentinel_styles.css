@@ -73,7 +73,8 @@ img.sensor {
 
 
 .fadeButton {
-	animation: fadeIn 3s ease;
+  width:25%;
+  height:200px;
 }
 
 .hangingindent {
@@ -115,13 +116,13 @@ img.sensor {
 }
 
 .bottom-center {
-  position: absolute;
   top: 3px;
   right: 16px;
   margin-right:70%;
-  margin-top:300px;
   padding-bottom: 0px;
   margin-bottom: 0%;
+  align-content: center;
+  display: inline-block;
 }
 
 .transition {
@@ -207,43 +208,11 @@ img.sensor {
   border-radius: 8px;
 }
 
-.button-intro {
-  background-color: black; 
-  border-color: white;
-  border:double;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  border-radius: 8px;
-  width:160px;
+.pad-div {
+  padding: top 30px;
 }
 
-.button-intro:hover {
-  background-color:burlywood;
-  color:black;
-}
 
-.button-intro2 {
-  background-color: black; 
-  border-color: white;
-  border:double;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  border-radius: 8px;
-  width:270px;
-}
-
-.button-intro2:hover {
-  background-color:burlywood;
-  color:black;
-}
 
 .text {
   color: white;
