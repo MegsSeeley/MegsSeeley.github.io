@@ -11,7 +11,7 @@ function Home(){
                 <h1>
                 <br />
                 <div className = "center-text black-text">
-                    Megs Seeley
+                    Test
                 </div>
                 <br />
             </h1>
